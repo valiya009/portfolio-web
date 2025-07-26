@@ -1,3 +1,4 @@
+// src/components/Hero.jsx
 import {
   ExternalLink,
   Facebook,
@@ -14,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 
 const Hero = () => {
-  const [user, setUser] = useState(null); // Start with null
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const getMyProfile = async () => {
@@ -25,7 +26,10 @@ const Hero = () => {
         );
         setUser(data.user);
       } catch (error) {
-        console.error("Error fetching user profile:", error);
+        console.error(
+          "Error fetching user profile:",
+          error?.response?.data || error.message
+        );
       }
     };
 
@@ -49,7 +53,7 @@ const Hero = () => {
 
       <h1 className="text-tubeLight-effect overflow-x-hidden text-[1.3rem] sm:text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px]">
         <Typewriter
-          words={["MERN STACK DEVLOPER", "FREELANCER", ""]}
+          words={["MERN STACK DEVELOPER", "FREELANCER", ""]}
           loop={50}
           cursor
           typeSpeed={70}
@@ -59,7 +63,7 @@ const Hero = () => {
       </h1>
 
       <div className="w-fit px-5 py-2 bg-slate-50 rounded-[20px] flex gap-5 items-center mt-4 md:mt-8 lg:mt-10">
-        <Link to="" target="_blank">
+        <Link to={user?.youtubeURL || "#"} target="_blank">
           <Youtube className="text-red-500 w-7 h-7" />
         </Link>
         <Link to={user?.instagramURL || "#"} target="_blank">
