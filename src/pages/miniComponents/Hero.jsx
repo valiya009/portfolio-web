@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 const Hero = () => {
   const [user, setUser] = useState(null);
@@ -21,7 +22,7 @@ const Hero = () => {
     const getMyProfile = async () => {
       try {
         const { data } = await axios.get(
-          "https://portfolio-backend-uzey.onrender.com/api/v1/user/portfolio/me",
+          `${API_BASE_URL}/user/portfolio/me`,
           { withCredentials: true }
         );
         setUser(data.user);
