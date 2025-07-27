@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../../config/api";
 
 const Contact = () => {
   const [senderName, setSenderName] = useState("");
@@ -15,7 +16,7 @@ const Contact = () => {
     setLoading(true);
     await axios
       .post(
-        "https://portfolio-backend-uzey.onrender.com/api/v1/message/send",
+        `${API_BASE_URL}/message/send`,
         { senderName, subject, message },
         {
           withCredentials: true,
