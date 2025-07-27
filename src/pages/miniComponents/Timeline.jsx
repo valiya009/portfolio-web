@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { API_BASE_URL } from "../../config/api";
 
 const Timeline = () => {
   const [timeline, setTimeline] = useState([]);
   useEffect(() => {
     const getMyTimeline = async () => {
       const { data } = await axios.get(
-        "https://portfolio-backend-uzey.onrender.com/api/v1/timeline/getall",
+        `${API_BASE_URL}/timeline/getall`,
         { withCredentials: true }
       );
       setTimeline(data.timelines);

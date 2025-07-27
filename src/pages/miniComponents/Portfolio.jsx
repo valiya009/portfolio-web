@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../../config/api";
 
 const Portfolio = () => {
   const [viewAll, setViewAll] = useState(false);
@@ -10,7 +11,7 @@ const Portfolio = () => {
   useEffect(() => {
     const getMyProjects = async () => {
       const { data } = await axios.get(
-        "https://portfolio-backend-uzey.onrender.com/api/v1/project/getall",
+        `${API_BASE_URL}/project/getall`,
         { withCredentials: true }
       );
       setProjects(data.projects);

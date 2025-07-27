@@ -1,13 +1,14 @@
 import { Card } from "@/components/ui/card";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { API_BASE_URL } from "../../config/api";
 
 const Skills = () => {
   const [skills, setSkills] = useState([]);
   useEffect(() => {
     const getMySkills = async () => {
       const { data } = await axios.get(
-        "https://portfolio-backend-uzey.onrender.com/api/v1/skill/getall",
+        `${API_BASE_URL}/skill/getall`,
         { withCredentials: true }
       );
       setSkills(data.skills);

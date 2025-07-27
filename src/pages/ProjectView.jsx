@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
+import { API_BASE_URL } from "../config/api";
 
 const ProjectView = () => {
   const [title, setTitle] = useState("");
@@ -20,7 +21,7 @@ const ProjectView = () => {
     const getProject = async () => {
       await axios
         .get(
-          `https://portfolio-backend-uzey.onrender.com/api/v1/project/get/${id}`,
+          `${API_BASE_URL}/project/get/${id}`,
           {
             withCredentials: true,
           }
